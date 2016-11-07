@@ -1,0 +1,13 @@
+# Project git ignore file
+#
+# Notice:
+# You should specify environment ignored files at global ignore e.g.
+#  * `*~` (vim swap file)
+#  *`.DS_Store` (Mac OS Store File)
+#  * `Thumb.db` (Windows Store File)
+#  * etc.
+#
+
+# for Stack
+.stack-work/
+
