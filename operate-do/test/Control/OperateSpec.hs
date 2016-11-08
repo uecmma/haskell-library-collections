@@ -29,11 +29,11 @@ spec = do
         (==) [opdo| const -> x; "str"; 'c' |] $ (x :: Int) `const` "str" `const` 'c'
 
     it "should be through type check" $ do
-      [opdo| <*> -> pure id; return 1; fail "error" |] `shouldBe` Nothing
+      [opdo| <*> -> pure const; return True; fail "error" |] `shouldBe` Nothing
 
     it "should allow multiline" $ do
       [opdo| <*> ->
-        pure id
-        return 1
+        pure const
+        return True
         fail "error"
         |] `shouldBe` Nothing

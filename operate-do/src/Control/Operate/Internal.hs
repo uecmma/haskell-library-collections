@@ -72,6 +72,13 @@ formatOpdoStmts (x:xs)          = do
   return $ OpdoStatements (x:es) e
 formatOpdoStmts _               = fail "least an expression"
 
+-- TODO: support this syntax (indent base parse)
+--
+-- @
+--   [opdo| const -> 1
+--                   "str"
+--   |]
+-- @
 parseOpdoStmts :: String -> Q OpdoStatements
 parseOpdoStmts stmtsStr = do
   let prefix = "do "

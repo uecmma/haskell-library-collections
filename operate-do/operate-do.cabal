@@ -3,7 +3,7 @@ version:        0.1.0
 synopsis:       Simple project template from stack
 description:    Please see README.md
 category:       Meta
-homepage:       https://github.com/uecmma/haskell-library-collections/operate-do#readme
+homepage:       https://github.com/uecmma/haskell-library-collections/tree/master/operate-do
 bug-reports:    https://github.com/uecmma/haskell-library-collections/issues
 author:         uecmma
 maintainer:     developer@mma.club.uec.ac.jp
@@ -36,8 +36,8 @@ library
   build-depends:
       base >= 4.7 && < 5
     , charset
-    , haskell-src-meta
-    , template-haskell
+    , haskell-src-meta >= 0.2
+    , template-haskell >= 2.11 && < 3
   default-language: Haskell2010
 
 test-suite spec-test

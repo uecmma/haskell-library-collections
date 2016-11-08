@@ -45,6 +45,7 @@ import           System.Environment
 -- | a builder for CLI application
 --
 -- Examples:
+--
 -- >>> :{
 -- let cliInfo = baseCLIInfo "CLI Application" "Example of CLI Application"
 -- in withArgs ["--help"] $ buildCLIApp cliInfo return (pure ()) $ do
@@ -109,6 +110,7 @@ buildCLIGeneralApp cliInfo commonParser mOnFailure commands
 -- | a builder for simple CLI application
 --
 -- Examples:
+--
 -- >>> :{
 -- let cliInfo = baseCLIInfo "Simple CLI Application" "Example of Simple CLI Application"
 -- in withArgs ["--help"] $ buildSimpleCLI cliInfo (pure ()) $ \x -> do

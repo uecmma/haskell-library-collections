@@ -8,6 +8,7 @@ import qualified Data.CharSet.Unicode.Category as UCS
 -- | Is Haskell whitespace character
 --
 -- Examples:
+--
 -- >>> isHsWhitespace ' '
 -- True
 --
