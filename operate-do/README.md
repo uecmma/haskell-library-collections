@@ -61,7 +61,7 @@ Of course, you can free to use `$`.  Moreover, this is used as weak `do`:
 An example:
 
 ```haskell
-[opdo| >>> -> { (+ 1); show; head |] :: Num a => a -> Char
+[opdo| >>> -> { (+ 1); show; head } |] :: Num a => a -> Char
 
 # Same (use section version)
 [opdo| (>>>) -> { (+ 1); show; head } |]
