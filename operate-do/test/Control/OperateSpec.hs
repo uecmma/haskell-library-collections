@@ -20,7 +20,7 @@ spec = do
     it "return infix value for left assoc" $ property $
       \x ->
         [opdo| <*> -> pure const; Just x; Just "str" |] == Just (x :: Int)
-        && [opdo| <*> -> pure const; Just x; Nothing |] == Nothing
+        && isNothing [opdo| <*> -> pure const; Just x; Nothing |]
 
     it "return infix value for right assoc" $ property $
       \x ->

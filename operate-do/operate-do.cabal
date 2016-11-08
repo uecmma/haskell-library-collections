@@ -3,7 +3,8 @@ version:        0.1.0
 synopsis:       Simple project template from stack
 description:    Please see README.md
 category:       Meta
-homepage:       https://github.com/uecmma/haskell-library-collections#readme
+homepage:       https://github.com/uecmma/haskell-library-collections/operate-do#readme
+bug-reports:    https://github.com/uecmma/haskell-library-collections/issues
 author:         uecmma
 maintainer:     developer@mma.club.uec.ac.jp
 copyright:      2016 uecmma
@@ -65,6 +66,4 @@ test-suite doc-test
     build-depends:
         base
       , doctest
-      , directory
-      , filepath
       , filemanip

@@ -1,7 +1,6 @@
 module Main where
 
 import           Data.Semigroup
-import           System.FilePath
 import           System.FilePath.Find
 import           Test.DocTest
 
