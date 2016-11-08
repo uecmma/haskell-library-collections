@@ -22,7 +22,7 @@ formatOperatorExp identS = do
   mayName <- lookupValueName identS
   name <- maybe (fail $ "cannot find " <> identS) return mayName
   mayFixity <- reifyFixity name
-  let dir = maybe InfixL (\(Fixity _ dir) -> dir) mayFixity
+  let dir = maybe InfixL (\(Fixity _ fixityDir) -> fixityDir) mayFixity
   opDir <- case dir of
     InfixL -> return LeftOperator
     InfixR -> return RightOperator
@@ -57,20 +57,20 @@ rmArrowPrefix ('→':xs)     = do
 rmArrowPrefix (x:xs)
   | isHsWhitespace x       = rmArrowPrefix xs
 rmArrowPrefix []           = fail "Parse error: no statements"
-rmArrowPrefix (x:xs)       = fail $ "Parse error: " <> [x]
+rmArrowPrefix (x:_)        = fail $ "Parse error: " <> [x]
 
 formatDoStmts :: Stmt -> Q OpdoStmt
-formatDoStmts (NoBindS exp) = return $ OpdoExpS exp
-formatDoStmts (LetS decls)  = fail "LetS is not supported"
-formatDoStmts (BindS _ _)   = fail "BindS is not supported"
-formatDoStmts (ParS _)      = fail "ParS is not supported"
+formatDoStmts (NoBindS expr) = return $ OpdoExpS expr
+formatDoStmts (LetS _)       = fail "LetS is not supported"
+formatDoStmts (BindS _ _)    = fail "BindS is not supported"
+formatDoStmts (ParS _)       = fail "ParS is not supported"
 
 formatOpdoStmts :: [OpdoStmt] -> Q OpdoStatements
-formatOpdoStmts [OpdoExpS exp] = return $ OpdoStatements [] exp
-formatOpdoStmts (x:xs)         = do
+formatOpdoStmts [OpdoExpS expr] = return $ OpdoStatements [] expr
+formatOpdoStmts (x:xs)          = do
   OpdoStatements es e <- formatOpdoStmts xs
   return $ OpdoStatements (x:es) e
-formatOpdoStmts _              = fail "least an expression"
+formatOpdoStmts _               = fail "least an expression"
 
 parseOpdoStmts :: String -> Q OpdoStatements
 parseOpdoStmts stmtsStr = do

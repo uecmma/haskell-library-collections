@@ -24,6 +24,7 @@ flag test-doctest
   manual:  True
 
 library
+  ghc-options: -Wall
   hs-source-dirs:
       src
   exposed-modules:

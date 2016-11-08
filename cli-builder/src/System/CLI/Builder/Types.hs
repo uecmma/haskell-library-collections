@@ -9,7 +9,6 @@ module System.CLI.Builder.Types
   ) where
 
 import           Control.Arrow              hiding (left, right)
-import           Control.Monad.IO.Class
 import           Control.Monad.Trans.Either
 import           Control.Monad.Trans.Reader
 import           Control.Monad.Trans.Writer

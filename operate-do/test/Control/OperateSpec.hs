@@ -3,7 +3,6 @@
 module Control.OperateSpec where
 
 import           Control.Operate
-import           Data.Maybe
 import           Test.Hspec
 import           Test.QuickCheck
 
@@ -19,8 +18,7 @@ spec = do
 
     it "return infix value for left assoc" $ property $
       \x ->
-        [opdo| <*> -> pure const; Just x; Just "str" |] == Just (x :: Int)
-        && isNothing [opdo| <*> -> pure const; Just x; Nothing |]
+        (==) [opdo| - -> x; 1; 2 |] $ (x :: Int) - 1 - 2
 
     it "return infix value for right assoc" $ property $
       \x ->
@@ -29,3 +27,13 @@ spec = do
     it "return infix value for function" $ property $
       \x ->
         (==) [opdo| const -> x; "str"; 'c' |] $ (x :: Int) `const` "str" `const` 'c'
+
+    it "should be through type check" $ do
+      [opdo| <*> -> pure id; return 1; fail "error" |] `shouldBe` Nothing
+
+    it "should allow multiline" $ do
+      [opdo| <*> ->
+        pure id
+        return 1
+        fail "error"
+        |] `shouldBe` Nothing
