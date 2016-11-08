@@ -1,6 +1,8 @@
 resolver: lts-7.8
 packages:
-- '.'
+- 'cli-builder'
+- 'cli-builder/examples'
+- 'operate-do'
 extra-deps: []
 flags: {}
 extra-package-dbs: []

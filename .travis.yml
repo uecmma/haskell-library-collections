@@ -1,0 +1,31 @@
+language: c
+
+sudo: false
+
+env:
+  - STACK_YAML=stack.yaml
+
+addons:
+  apt:
+    packages:
+    - libgmp-dev
+
+install:
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  - stack --version
+  - stack setup --no-terminal
+  - stack install hlint
+
+script:
+  - hlint .
+  - stack build --ghc-options=-Werror --no-terminal --test --haddock
+  - for package in $(cat sources.txt); do
+      echo testing $package;
+      stack test --no-terminal $package;
+    done
+
+cache:
+  directories:
+    - $HOME/.stack
