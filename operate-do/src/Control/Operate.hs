@@ -13,27 +13,37 @@ import           Language.Haskell.TH.Quote
 -- | operate do notation
 --
 -- Syntax:
+--
+-- @
 --   <lexp>     ::= <operator> ar { <opcmds> }        (opdo expression)
 --   <ar>       ::= ->
---                | <-
 --   <operator> ::= <identity>
---                | ( <identity> )　　　　　　　　　　　　(for section)
+--                | ( <identity> )                    (for section)
 --   <opcmds>   ::= <opcmd_1> ... <opcmd_n> <exp> [;] (n >= 0)
 --   <opcmd>    ::= <exp> ;
 --                | ;                                 (empty statement)
+-- @
 --
 -- Sematics:
+--
+-- @
 --   [opdo| _  -> { e } |] = e
---   [opdo| op -> { let decls; stmts } |]
---     = let decls in [opdo| op -> { stmts } |]
+-- @
 --
 -- * InfixL Operator:
+--
+-- @
 --   [opdo| op -> { stmts e } |] = op [opdo| op -> { stmts } |] e
+-- @
 --
 -- * InfixR Operator:
+--
+-- @
 --   [opdo| op -> { e; stmts } |] = op e [opdo| op -> { stmts } |]
+-- @
 --
 -- Examples:
+--
 -- >>> [opdo| (.) -> { head; show; id } |] 1
 -- '1'
 --
