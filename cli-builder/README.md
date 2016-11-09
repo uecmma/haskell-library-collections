@@ -1,4 +1,4 @@
-# CLI Builder
+# CLI Builder [![Hackage page (downloads and API reference)][hackage-png]][hackage]
 
 This packages contains builders to make cli application easily based `optparse-applicative`.
 
@@ -52,3 +52,7 @@ Available options:
 ```
 
 For more examples, see [examples](examples).
+
+[hackage-png]: https://img.shields.io/hackage/v/cli-builder.svg
+[hackage]: https://hackage.haskell.org/package/cli-builder
+

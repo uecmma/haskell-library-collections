@@ -1,4 +1,4 @@
-# Operate Do
+# Operate Do [![Hackage page (downloads and API reference)][hackage-png]][hackage]
 
 This packages provides an useful syntax sugar for infixing.
 
@@ -111,3 +111,7 @@ Take left associativity:
 ```haskell
 [opdo| func -> a; b; c |] == a `func` b `func` c
 ```
+
+[hackage-png]: https://img.shields.io/hackage/v/operate-do.svg
+[hackage]: https://hackage.haskell.org/package/operate-do
+
